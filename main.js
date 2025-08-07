@@ -6,6 +6,15 @@ const loginForm = document.querySelector(".login-form");
 const signupForm = document.querySelector(".signup-form");
 const btns = document.querySelectorAll(".btn");
 const icons = document.querySelectorAll(".icon");
+const inputs = document.querySelectorAll(".input");
+const submitBtns = document.querySelectorAll(".submit");
+const regPassInput = document.getElementById("reg-pass-input");
+const regConPassInput = document.getElementById("reg-Conpass-input");
+// regex format
+const emailFormat =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const passFormat =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 // functions
 // hide look eye icon
@@ -39,30 +48,7 @@ function changeForm(el) {
   }
 }
 
-// events
-icons.forEach((icon) => {
-  icon.addEventListener("click", (e) => lookHidePass(e.currentTarget));
-});
-btns.forEach((btn) => {
-  btn.addEventListener("click", (e) => changeForm(e.currentTarget));
-});
-
-////////////////////////////
 // validation form
-////////////////////////////
-// regex format
-const emailFormat =
-  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const passFormat =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
-// elements
-const inputs = document.querySelectorAll(".input");
-const submitBtns = document.querySelectorAll(".submit");
-const regPassInput = document.getElementById("reg-pass-input");
-const regConPassInput = document.getElementById("reg-Conpass-input");
-
-// functions
 function addWrongStyle(el, span) {
   span.classList.remove("hidden");
   el.style.border = "#D58B8F 1px solid";
@@ -123,3 +109,10 @@ submitBtns.forEach((btn) =>
     });
   })
 );
+
+icons.forEach((icon) => {
+  icon.addEventListener("click", (e) => lookHidePass(e.currentTarget));
+});
+btns.forEach((btn) => {
+  btn.addEventListener("click", (e) => changeForm(e.currentTarget));
+});
